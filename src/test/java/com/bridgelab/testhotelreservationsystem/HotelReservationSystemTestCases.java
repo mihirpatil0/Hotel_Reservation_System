@@ -6,8 +6,8 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
-import java.time.LocalDate;
-import java.time.Month;
+import java.util.List;
+import java.util.Map;
 
 /*******************************
  * @author mihir
@@ -81,5 +81,19 @@ public class HotelReservationSystemTestCases
         ridgeWood = new HotelDetails("Ridgewood",220 , 100, 150, 40);
         hotelReservation.addHotel(ridgeWood);
         Assertions.assertEquals(90,hotelReservation.hotelList.get(0).getWeekDaysRatesForRewardCustomers());
+    }
+    @Test
+    public void getCheapestHotel_whenWeekDayAndWeekEnd_shouldReturnLakewoodAndBridgewood()
+    {
+        hotelReservation = new HotelReservation();
+        lakeWood = new HotelDetails("Lakewood",110 , 80, 90, 80);
+        hotelReservation.addHotel(lakeWood);
+        bridgeWood = new HotelDetails("Bridgewood",160 , 110, 60, 50);
+        hotelReservation.addHotel(bridgeWood);
+        ridgeWood = new HotelDetails("Ridgewood",220 , 100, 150, 40);
+        hotelReservation.addHotel(ridgeWood);
+        String cheapestHotel =  hotelReservation.findCheapestHotel("2021-07-23","2021-07-24");
+        Assertions.assertEquals("Bridgewood",cheapestHotel.get(0).getKey());
+        Assertions.assertEquals("Lakewood",cheapestHotel.get(1).getKey());
     }
 }

@@ -1,8 +1,10 @@
 package com.bridgelab.hotelreservationsystem;
 
+import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 import java.util.*;
+import java.util.stream.Collectors;
 
 /*********************************************************************************
  * @author mihir
@@ -67,25 +69,39 @@ public class HotelReservation
             {
                 for (HotelDetails hotel : hotelList)
                 {
-                    if (hotelPricesList.containsKey(hotel.getHotelName()))
+                    if (localStartDate.getDayOfWeek() == DayOfWeek.SUNDAY|| localStartDate.getDayOfWeek() == DayOfWeek.SATURDAY )
                     {
-                        int existingAmount;
-                        existingAmount = hotelPricesList.get(hotel.getHotelName());
-                        existingAmount = existingAmount + hotel.getWeekDaysRatesForRegularCustomers();
-                        Integer put = hotelPricesList.put(hotel.getHotelName(), existingAmount);
+                        setHotelsAndPrice(hotelPricesList, hotel, hotel.getWeekEndDaysRatesForRegularCustomers());
                     }
                     else
                     {
-                        hotelPricesList.put(hotel.getHotelName(), hotel.getWeekDaysRatesForRegularCustomers());
+                        setHotelsAndPrice(hotelPricesList, hotel, hotel.getWeekDaysRatesForRegularCustomers());
                     }
                 }
-                localStartDate=localStartDate.plusDays(1);
+                localStartDate=localStartDate.plusDays(1); //incrementing the days
             }
-            return  hotelPricesList.entrySet().stream().min(Comparator.comparing(Map.Entry::getValue)).get().getKey();
+            int minvalue = hotelPricesList.entrySet().stream().min(Comparator.comparing(Map.Entry::getValue)).get().getValue();
+            List<Map.Entry<String, Integer>> minPricehotel = hotelPricesList.entrySet().stream().filter(price -> price.getValue().equals(minvalue)).collect(Collectors.toList());
+            return String.valueOf(minPricehotel);
         }
         else
         {
-            return "Wrong Input";
+            System.out.println("Invalid dates");
+            return null  ;
+        }
+    }
+
+    private void setHotelsAndPrice(HashMap<String, Integer> hotelPricesList, HotelDetails hotel, int rate)
+    {
+        if (hotelPricesList.containsKey(hotel.getHotelName()))
+        {
+            int exsistingAmount =  hotelPricesList.get(hotel.getHotelName());
+            exsistingAmount += rate;
+            hotelPricesList.put(hotel.getHotelName(), exsistingAmount);
+        }
+        else
+        {
+            hotelPricesList.put(hotel.getHotelName(), rate);
         }
     }
 }
