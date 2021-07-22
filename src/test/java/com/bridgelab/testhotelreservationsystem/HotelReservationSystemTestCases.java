@@ -6,6 +6,9 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
+import java.time.LocalDate;
+import java.time.Month;
+
 /*******************************
  * @author mihir
  *
@@ -42,5 +45,29 @@ public class HotelReservationSystemTestCases
         lakeWood = new HotelDetails("LakeWood", 110, 80, 90, 80);
         boolean isTrue = hotelReservation.addHotel(lakeWood);
         Assertions.assertTrue(isTrue);
+    }
+    @Test
+    public void getCheapestHotel_whenDatesProper_shouldReturnLakewood()
+    {
+        hotelReservation = new HotelReservation();
+        lakeWood = new HotelDetails("Lakewood",110 , 80, 90, 80);
+        hotelReservation.addHotel(lakeWood);
+        bridgeWood = new HotelDetails("Bridgewood",160 , 110, 60, 50);
+        hotelReservation.addHotel(bridgeWood);
+        ridgeWood = new HotelDetails("Ridgewood",220 , 100, 150, 40);
+        hotelReservation.addHotel(ridgeWood);
+        Assertions.assertEquals("Lakewood",hotelReservation.findCheapestHotel("2021-07-24","2021-07-25"));
+    }
+    @Test
+    public void getCheapestHotel_whenDatesProvidedWrong_shouldReturnWrongInput()
+    {
+        hotelReservation = new HotelReservation();
+        lakeWood = new HotelDetails("Lakewood",110 , 80, 90, 80);
+        hotelReservation.addHotel(lakeWood);
+        bridgeWood = new HotelDetails("Bridgewood",160 , 110, 60, 50);
+        hotelReservation.addHotel(bridgeWood);
+        ridgeWood = new HotelDetails("Ridgewood",220 , 100, 150, 40);
+        hotelReservation.addHotel(ridgeWood);
+        Assertions.assertEquals("Wrong Input",hotelReservation.findCheapestHotel("2020-07-25","2020-07-24"));
     }
 }

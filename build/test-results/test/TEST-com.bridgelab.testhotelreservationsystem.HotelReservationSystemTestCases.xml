@@ -1,21 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.bridgelab.testhotelreservationsystem.HotelReservationSystemTestCases" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-07-22T15:17:24" hostname="NARUTO" time="0.017">
+<testsuite name="com.bridgelab.testhotelreservationsystem.HotelReservationSystemTestCases" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-07-22T18:48:43" hostname="NARUTO" time="0.018">
   <properties/>
-  <testcase name="givenHotelDetail_whenProper_shouldReturnTrue()" classname="com.bridgelab.testhotelreservationsystem.HotelReservationSystemTestCases" time="0.017"/>
-  <system-out><![CDATA[HotelDetails : [ hotelName='LakeWood', weekDaysRatesForRegularCustomers=110, weekEndDaysRatesForRegularCustomers=80, weekDaysRatesForRewardCustomers=90, weekEndDaysRatesForRewardCustomers=80]
-
-HotelDetails : [ hotelName='LakeWood', weekDaysRatesForRegularCustomers=110, weekEndDaysRatesForRegularCustomers=80, weekDaysRatesForRewardCustomers=90, weekEndDaysRatesForRewardCustomers=80]
-
-HotelDetails : [ hotelName='BridgeWood', weekDaysRatesForRegularCustomers=160, weekEndDaysRatesForRegularCustomers=110, weekDaysRatesForRewardCustomers=60, weekEndDaysRatesForRewardCustomers=50]
-
-HotelDetails : [ hotelName='LakeWood', weekDaysRatesForRegularCustomers=110, weekEndDaysRatesForRegularCustomers=80, weekDaysRatesForRewardCustomers=90, weekEndDaysRatesForRewardCustomers=80]
-
-HotelDetails : [ hotelName='BridgeWood', weekDaysRatesForRegularCustomers=160, weekEndDaysRatesForRegularCustomers=110, weekDaysRatesForRewardCustomers=60, weekEndDaysRatesForRewardCustomers=50]
-
-HotelDetails : [ hotelName='RidgeWood', weekDaysRatesForRegularCustomers=220, weekEndDaysRatesForRegularCustomers=100, weekDaysRatesForRewardCustomers=150, weekEndDaysRatesForRewardCustomers=40]
-
-HotelDetails : [ hotelName='LakeWood', weekDaysRatesForRegularCustomers=110, weekEndDaysRatesForRegularCustomers=80, weekDaysRatesForRewardCustomers=90, weekEndDaysRatesForRewardCustomers=80]
-
-]]></system-out>
+  <testcase name="getCheapestHotel_whenDatesProvidedWrong_shouldReturnWrongInput()" classname="com.bridgelab.testhotelreservationsystem.HotelReservationSystemTestCases" time="0.018"/>
+  <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
