@@ -70,4 +70,16 @@ public class HotelReservationSystemTestCases
         hotelReservation.addHotel(ridgeWood);
         Assertions.assertEquals("Wrong Input",hotelReservation.findCheapestHotel("2020-07-25","2020-07-24"));
     }
+    @Test
+    public void getWeekEndRates_whenLakewood_shouldReturn80()
+    {
+        hotelReservation = new HotelReservation();
+        lakeWood = new HotelDetails("Lakewood",110 , 80, 90, 80);
+        hotelReservation.addHotel(lakeWood);
+        bridgeWood = new HotelDetails("Bridgewood",160 , 110, 60, 50);
+        hotelReservation.addHotel(bridgeWood);
+        ridgeWood = new HotelDetails("Ridgewood",220 , 100, 150, 40);
+        hotelReservation.addHotel(ridgeWood);
+        Assertions.assertEquals(90,hotelReservation.hotelList.get(0).getWeekDaysRatesForRewardCustomers());
+    }
 }
