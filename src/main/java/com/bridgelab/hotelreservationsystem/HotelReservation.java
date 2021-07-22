@@ -14,7 +14,7 @@ import java.util.List;
 public class HotelReservation
 {
     //ArrayList will used to store different hotels
-    List<HotelDetails> hotelList;
+    public List<HotelDetails> hotelList;
 
     //Constructor
     public HotelReservation()
@@ -37,7 +37,7 @@ public class HotelReservation
      */
     public boolean addHotel(HotelDetails hotel)
     {
-        if (hotelList.add(hotel))
+        if(hotelList.add(hotel))
         {
             return true;
         }

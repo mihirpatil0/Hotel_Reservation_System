@@ -63,4 +63,15 @@ public class HotelDetails
     public void setWeekEndDaysRatesForRewardCustomers(int weekEndDaysRatesForRewardCustomers) {
         this.weekEndDaysRatesForRewardCustomers = weekEndDaysRatesForRewardCustomers;
     }
+
+    @Override
+    public String toString() {
+        return "HotelDetails : [ " +
+                "hotelName='" + hotelName + '\'' +
+                ", weekDaysRatesForRegularCustomers=" + weekDaysRatesForRegularCustomers +
+                ", weekEndDaysRatesForRegularCustomers=" + weekEndDaysRatesForRegularCustomers +
+                ", weekDaysRatesForRewardCustomers=" + weekDaysRatesForRewardCustomers +
+                ", weekEndDaysRatesForRewardCustomers=" + weekEndDaysRatesForRewardCustomers +
+                ']';
+    }
 }

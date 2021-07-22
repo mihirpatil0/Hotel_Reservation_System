@@ -28,10 +28,10 @@ public class HotelReservationSystemTestCases
     {
         com.bridgelab.hotelreservationsystem.HotelReservation hotelReservation = new HotelReservation();
         lakeWood = new HotelDetails("LakeWood", 110, 80, 90, 80);
-        bridgeWood = new HotelDetails("BridgeWood", 160, 110, 60, 50);
-        ridgeWood = new HotelDetails("RidgeWood", 220, 100, 150, 40);
         hotelReservation.addHotel(lakeWood);
+        bridgeWood = new HotelDetails("BridgeWood", 160, 110, 60, 50);
         hotelReservation.addHotel(bridgeWood);
+        ridgeWood = new HotelDetails("RidgeWood", 220, 100, 150, 40);
         hotelReservation.addHotel(ridgeWood);
     }
 
