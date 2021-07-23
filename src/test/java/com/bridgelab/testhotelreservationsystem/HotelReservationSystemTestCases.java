@@ -96,4 +96,18 @@ public class HotelReservationSystemTestCases
         Assertions.assertEquals("Bridgewood",cheapestHotel.get(0).getKey());
         Assertions.assertEquals("Lakewood",cheapestHotel.get(1).getKey());
     }
+
+    @Test
+    public void getRatingOfHotel_whenLakewood_shouldReturn3()
+    {
+        hotelReservation = new HotelReservation();
+        lakeWood = new HotelDetails("Lakewood",110 , 80, 90, 80);
+        hotelReservation.addHotel(lakeWood);
+        bridgeWood = new HotelDetails("Bridgewood",160 , 110, 60, 50);
+        hotelReservation.addHotel(bridgeWood);
+        ridgeWood = new HotelDetails("Ridgewood",220 , 100, 150, 40);
+        hotelReservation.addHotel(ridgeWood);
+        hotelReservation.setRatingsOfHotel(lakeWood, 3);
+        Assertions.assertEquals(3, lakeWood.getRating());
+    }
 }

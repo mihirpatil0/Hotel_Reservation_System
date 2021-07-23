@@ -15,6 +15,7 @@ public class HotelDetails
     private int weekEndDaysRatesForRegularCustomers;
     private int weekDaysRatesForRewardCustomers;
     private int weekEndDaysRatesForRewardCustomers;
+    private int rating;
 
     public HotelDetails(String hotelName, int weekDaysRatesForRegularCustomers, int weekEndDaysRatesForRegularCustomers, int weekDaysRatesForRewardCustomers, int weekEndDaysRatesForRewardCustomers) {
         this.hotelName = hotelName;
@@ -22,6 +23,14 @@ public class HotelDetails
         this.weekEndDaysRatesForRegularCustomers = weekEndDaysRatesForRegularCustomers;
         this.weekDaysRatesForRewardCustomers = weekDaysRatesForRewardCustomers;
         this.weekEndDaysRatesForRewardCustomers = weekEndDaysRatesForRewardCustomers;
+    }
+
+    public int getRating() {
+        return rating;
+    }
+
+    public void setRating(int rating) {
+        this.rating = rating;
     }
 
     public String getHotelName() {
@@ -65,13 +74,15 @@ public class HotelDetails
     }
 
     @Override
-    public String toString() {
-        return "HotelDetails : [ " +
+    public String
+    toString() {
+        return "HotelDetails{" +
                 "hotelName='" + hotelName + '\'' +
                 ", weekDaysRatesForRegularCustomers=" + weekDaysRatesForRegularCustomers +
                 ", weekEndDaysRatesForRegularCustomers=" + weekEndDaysRatesForRegularCustomers +
                 ", weekDaysRatesForRewardCustomers=" + weekDaysRatesForRewardCustomers +
                 ", weekEndDaysRatesForRewardCustomers=" + weekEndDaysRatesForRewardCustomers +
-                ']';
+                ", rating=" + rating +
+                '}';
     }
 }

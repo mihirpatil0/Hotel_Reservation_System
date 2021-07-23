@@ -51,6 +51,7 @@ public class HotelReservation
      * Name : findCheapestHotel
      *
      * Description : Finding cheapest hotel available as per given provided date.
+     *
      * @param startDate
      * @param endDate
      * @return
@@ -91,6 +92,15 @@ public class HotelReservation
         }
     }
 
+    /**
+     * Name : setHotelsAndPrice
+     *
+     * Description : Setting hotels with there priceses.
+     *
+     * @param hotelPricesList
+     * @param hotel
+     * @param rate
+     */
     private void setHotelsAndPrice(HashMap<String, Integer> hotelPricesList, HotelDetails hotel, int rate)
     {
         if (hotelPricesList.containsKey(hotel.getHotelName()))
@@ -103,5 +113,15 @@ public class HotelReservation
         {
             hotelPricesList.put(hotel.getHotelName(), rate);
         }
+    }
+
+    /**
+     * Name: ratings
+     * @param lakeWood
+     * @param rating
+     */
+    public void setRatingsOfHotel(HotelDetails lakeWood, int rating)
+    {
+        lakeWood.setRating(3);
     }
 }
