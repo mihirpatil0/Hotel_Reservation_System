@@ -145,4 +145,21 @@ public class HotelReservationSystemTestCases
         HashMap<Integer, List<Map.Entry<String, Integer>>> hotelsMap = hotelReservation.cheapestBestRatedHotel("2021-07-24","2021-07-23");
         Assertions.assertEquals(null, hotelsMap);
     }
+
+    @Test
+    public void getBestRatedHotel_whenProperDates_shouldReturnRidgewood()
+    {
+        hotelReservation = new HotelReservation();
+        lakeWood = new HotelDetails("Lakewood",110 , 80, 90, 80);
+        hotelReservation.addHotel(lakeWood);
+        bridgeWood = new HotelDetails("Bridgewood",160 , 110, 60, 50);
+        hotelReservation.addHotel(bridgeWood);
+        ridgeWood = new HotelDetails("Ridgewood",220 , 100, 150, 40);
+        hotelReservation.addHotel(ridgeWood);
+        hotelReservation.setRatingsOfHotel(lakeWood, 3);
+        hotelReservation.setRatingsOfHotel(bridgeWood, 4);
+        hotelReservation.setRatingsOfHotel(ridgeWood, 5);
+        HashMap<Integer, List<Map.Entry<String, Integer>>> hotelsMap = hotelReservation.cheapestBestRatedHotel("2021-07-23","2021-07-24");
+        Assertions.assertEquals("Ridgewood", hotelsMap.get(370).get(0).getKey());
+    }
 }

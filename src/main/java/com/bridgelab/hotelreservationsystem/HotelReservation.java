@@ -158,7 +158,7 @@ public class HotelReservation
                     }
                 }
             }
-            int maxRating = cheapHotelsWithBestRating.entrySet().stream().max((entry1,entry2) -> entry1.getValue().compareTo(entry2.getValue())).get().getValue();
+            int maxRating = cheapHotelsWithBestRating.entrySet().stream().max(Comparator.comparing(Map.Entry::getValue)).get().getValue();
             List<Map.Entry<String, Integer>> maxRatedHotel = cheapHotelsWithBestRating.entrySet().stream().filter(price -> price.getValue().equals(maxRating)).collect(Collectors.toList());
             HashMap<Integer ,List<Map.Entry<String, Integer>>> bestRatedHotels = new HashMap<Integer, List<Map.Entry<String,Integer>>>();
             bestRatedHotels.put(cheapHotels.get(0).getValue(), maxRatedHotel);
@@ -169,5 +169,22 @@ public class HotelReservation
             System.out.println("Invalid dates");
             return null;
         }
+    }
+
+    /**
+     * Name : getBestRatedHotel
+     *
+     * Description : Finding highest rated hotel amongst all.
+     *
+     * @param hotelsWithBestRating
+     * @return
+     *
+     * Modification : First commit 19-July-2021.
+     */
+    private List<Map.Entry<String, Integer>> getBestRatedHotel(HashMap<String, Integer> hotelsWithBestRating)
+    {
+        int maxRating = hotelsWithBestRating.entrySet().stream().max(Comparator.comparing(Map.Entry::getValue)).get().getValue();
+        List<Map.Entry<String, Integer>> maxRatedHotel = hotelsWithBestRating.entrySet().stream().filter(price -> price.getValue().equals(maxRating)).collect(Collectors.toList());
+        return maxRatedHotel;
     }
 }
