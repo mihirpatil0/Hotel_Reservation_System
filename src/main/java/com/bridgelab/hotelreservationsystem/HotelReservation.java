@@ -160,7 +160,7 @@ public class HotelReservation
             }
             int maxRating = cheapHotelsWithBestRating.entrySet().stream().max(Comparator.comparing(Map.Entry::getValue)).get().getValue();
             List<Map.Entry<String, Integer>> maxRatedHotel = cheapHotelsWithBestRating.entrySet().stream().filter(price -> price.getValue().equals(maxRating)).collect(Collectors.toList());
-            HashMap<Integer ,List<Map.Entry<String, Integer>>> bestRatedHotels = new HashMap<Integer, List<Map.Entry<String,Integer>>>();
+            HashMap<Integer ,List<Map.Entry<String, Integer>>> bestRatedHotels = new HashMap<>();
             bestRatedHotels.put(cheapHotels.get(0).getValue(), maxRatedHotel);
             return bestRatedHotels;
         }
