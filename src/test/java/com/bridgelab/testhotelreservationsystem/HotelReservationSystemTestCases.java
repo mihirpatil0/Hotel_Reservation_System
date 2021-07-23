@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -109,5 +110,39 @@ public class HotelReservationSystemTestCases
         hotelReservation.addHotel(ridgeWood);
         hotelReservation.setRatingsOfHotel(lakeWood, 3);
         Assertions.assertEquals(3, lakeWood.getRating());
+    }
+
+    @Test
+    public void getBestRatedHotel_whenProperDates_shouldReturnBridgewood()
+    {
+        hotelReservation = new HotelReservation();
+        lakeWood = new HotelDetails("Lakewood",110 , 80, 90, 80);
+        hotelReservation.addHotel(lakeWood);
+        bridgeWood = new HotelDetails("Bridgewood",160 , 110, 60, 50);
+        hotelReservation.addHotel(bridgeWood);
+        ridgeWood = new HotelDetails("Ridgewood",220 , 100, 150, 40);
+        hotelReservation.addHotel(ridgeWood);
+        hotelReservation.setRatingsOfHotel(lakeWood, 3);
+        hotelReservation.setRatingsOfHotel(bridgeWood, 4);
+        hotelReservation.setRatingsOfHotel(ridgeWood, 5);
+        HashMap<Integer, List<Map.Entry<String, Integer>>> hotelsMap = hotelReservation.cheapestBestRatedHotel("2021-07-23","2021-07-24");
+        Assertions.assertEquals("Bridgewood", hotelsMap.get(200).get(0).getKey());
+    }
+
+    @Test
+    public void getBestRatedHotel_whenDatesNotProper_shouldReturnNull()
+    {
+        hotelReservation = new HotelReservation();
+        lakeWood = new HotelDetails("Lakewood",110 , 80, 90, 80);
+        hotelReservation.addHotel(lakeWood);
+        bridgeWood = new HotelDetails("Bridgewood",160 , 110, 60, 50);
+        hotelReservation.addHotel(bridgeWood);
+        ridgeWood = new HotelDetails("Ridgewood",220 , 100, 150, 40);
+        hotelReservation.addHotel(ridgeWood);
+        hotelReservation.setRatingsOfHotel(lakeWood, 3);
+        hotelReservation.setRatingsOfHotel(bridgeWood, 4);
+        hotelReservation.setRatingsOfHotel(ridgeWood, 5);
+        HashMap<Integer, List<Map.Entry<String, Integer>>> hotelsMap = hotelReservation.cheapestBestRatedHotel("2021-07-24","2021-07-23");
+        Assertions.assertEquals(null, hotelsMap);
     }
 }

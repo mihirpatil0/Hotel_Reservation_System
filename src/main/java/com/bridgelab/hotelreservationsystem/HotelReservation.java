@@ -56,7 +56,7 @@ public class HotelReservation
      * @param endDate
      * @return
      *
-     * Modification : 19-July-2021
+     * Modification : First commit 19-July-2021.
      */
     public String findCheapestHotel(String startDate,String endDate)
     {
@@ -100,6 +100,8 @@ public class HotelReservation
      * @param hotelPricesList
      * @param hotel
      * @param rate
+     *
+     * Modification: First commit 19-July-2021.
      */
     private void setHotelsAndPrice(HashMap<String, Integer> hotelPricesList, HotelDetails hotel, int rate)
     {
@@ -117,11 +119,55 @@ public class HotelReservation
 
     /**
      * Name: ratings
+     *
+     * Description : Adding rating to respective hotels.
+     *
      * @param lakeWood
      * @param rating
+     *
+     * Modification : First commit 19-July-2021.
      */
     public void setRatingsOfHotel(HotelDetails lakeWood, int rating)
     {
         lakeWood.setRating(3);
+    }
+
+    /**
+     * Name : cheapestBestRatedHotel
+     *
+     * Description : As date provided returning best rated cheapest hotel.
+     * @param startDate
+     * @param endDate
+     * @return
+     *
+     * Modification : First commit 19-July-2021.
+     */
+    public HashMap<Integer, List<Map.Entry<String, Integer>>> cheapestBestRatedHotel(String startDate, String endDate)
+    {
+        try
+        {
+            HashMap<String, Integer> cheapHotelsWithBestRating = new HashMap<String, Integer>();
+            List<Map.Entry<String, Integer>> cheapHotels = findCheapestHotel(startDate, endDate);
+            for (HotelDetails hotel : hotelList)
+            {
+                for (Map.Entry<String, Integer> cheapHotel : cheapHotels)
+                {
+                    if (cheapHotel.getKey().equals(hotel.getHotelName()))
+                    {
+                        cheapHotelsWithBestRating.put(hotel.getHotelName(),hotel.getRating());
+                    }
+                }
+            }
+            int maxRating = cheapHotelsWithBestRating.entrySet().stream().max((entry1,entry2) -> entry1.getValue().compareTo(entry2.getValue())).get().getValue();
+            List<Map.Entry<String, Integer>> maxRatedHotel = cheapHotelsWithBestRating.entrySet().stream().filter(price -> price.getValue().equals(maxRating)).collect(Collectors.toList());
+            HashMap<Integer ,List<Map.Entry<String, Integer>>> bestRatedHotels = new HashMap<Integer, List<Map.Entry<String,Integer>>>();
+            bestRatedHotels.put(cheapHotels.get(0).getValue(), maxRatedHotel);
+            return bestRatedHotels;
+        }
+        catch (Exception e)
+        {
+            System.out.println("Invalid dates");
+            return null;
+        }
     }
 }
